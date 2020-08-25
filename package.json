@@ -26,7 +26,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "youthful-benz-3ae09b.netlify.app",
+  "homepage": "https://youthful-benz-3ae09b.netlify.app",
   "browserslist": {
     "production": [
       ">0.2%",
