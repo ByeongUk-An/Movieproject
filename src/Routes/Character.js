@@ -48,7 +48,8 @@ const WrapItem2 = styled.div`
   }
   & > div > div > h4 {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
+  
   }
    
 `;
