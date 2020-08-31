@@ -8,7 +8,7 @@ const PosterHead = styled.h2`
   margin-bottom: 20px;
 `;
 const PosterWrap = styled.div`
-  width: 170px;
+  width: 150px;
   height: 225px;
   margin-right: 20px;
   text-align: center;
@@ -22,6 +22,7 @@ const PosterWrap = styled.div`
   & > h4 {
     font-weight: 700;
     font-size: 1.2rem;
+    color: black;
   }
   & > span {
     color: rgba(0, 0, 0, 0.6);
@@ -36,6 +37,11 @@ const ImgItemWrap = styled.div`
   margin-bottom: 40px;
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
+`;
+const PosterLink = styled(Link)`
+  width: 150px;
+  margin-right: 40px;
 `;
 
 function PosterTV({ data, subject }) {
@@ -46,7 +52,7 @@ function PosterTV({ data, subject }) {
       <PosterHead>{subject}</PosterHead>
       <ImgItemWrap>
         {data.map((result) => (
-          <Link key={result.id} to={`/detail/${result.id}`}>
+          <PosterLink key={result.id} to={`/detail/${result.id}`}>
             <PosterWrap key={result.id}>
               <img
                 src={`https://image.tmdb.org/t/p/w440_and_h660_face${result.poster_path}`}
@@ -54,14 +60,14 @@ function PosterTV({ data, subject }) {
               />{" "}
               {/*이미지 map*/}
               <h4>
-                {result.name.length > 12
-                  ? result.name.substring(0, 12) + "…"
+                {result.name.length > 8
+                  ? result.name.substring(0, 8) + "…"
                   : result.name}
               </h4>{" "}
               {/*타이틀 map*/}
               <span>{result.first_air_date}</span>
             </PosterWrap>
-          </Link>
+          </PosterLink>
         ))}
       </ImgItemWrap>
     </>

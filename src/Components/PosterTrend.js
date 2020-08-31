@@ -22,6 +22,7 @@ const PosterWrap = styled.div`
   & > h4 {
     font-weight: 700;
     font-size: 1.2rem;
+    color: black;
   }
   & > span {
     color: rgba(0, 0, 0, 0.6);
@@ -36,6 +37,7 @@ const ImgItemWrap = styled.div`
   margin-bottom: 40px;
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
 `;
 
 function PosterTrend({ data, subject }) {
@@ -55,14 +57,14 @@ function PosterTrend({ data, subject }) {
               {/*이미지 map*/}
               {result.title ? (
                 <h4>
-                  {result.title.length > 10
-                    ? result.title.substring(0, 10) + "…"
+                  {result.title.length > 8
+                    ? result.title.substring(0, 8) + "…"
                     : result.title}
                 </h4>
               ) : (
                 <h4>
-                  {result.name.length > 10
-                    ? result.name.substring(0, 10) + "…"
+                  {result.name.length > 8
+                    ? result.name.substring(0, 8) + "…"
                     : result.name}
                 </h4>
               )}
