@@ -12,6 +12,7 @@ const PosterWrap = styled.div`
   width: 170px;
   height: 225px;
   margin-right: 20px;
+  text-align: center;
 
   & > img {
     width: 150px;
@@ -22,6 +23,7 @@ const PosterWrap = styled.div`
   & > h4 {
     font-weight: 700;
     font-size: 1.2rem;
+    color: black;
   }
   & > span {
     color: rgba(0, 0, 0, 0.6);
@@ -51,9 +53,14 @@ function PosterMovie({ data, subject }) {
               <img
                 src={`https://image.tmdb.org/t/p/w440_and_h660_face${result.poster_path}`}
                 alt="사진"
-              />{" "}
+              />
               {/*이미지 map*/}
-              <h4>{result.title}</h4> {/*타이틀 map*/}
+              <h4>
+                {result.title.length > 12
+                  ? result.title.substring(0, 12) + "…"
+                  : result.title}
+              </h4>{" "}
+              {/*타이틀 map*/}
               <span>{result.release_date}</span>
             </PosterWrap>
           </Link>
