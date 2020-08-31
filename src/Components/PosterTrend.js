@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const PosterHead = styled.h2`
   font-weight: 700;
@@ -45,31 +46,33 @@ function PosterTrend({ data, subject }) {
       <PosterHead>{subject}</PosterHead>
       <ImgItemWrap>
         {data.map((result) => (
-          <PosterWrap key={result.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w440_and_h660_face${result.poster_path}`}
-              alt="사진"
-            />{" "}
-            {/*이미지 map*/}
-            {result.title ? (
-              <h4>
-                {result.title.length > 10
-                  ? result.title.substring(0, 10) + "…"
-                  : result.title}
-              </h4>
-            ) : (
-              <h4>
-                {result.name.length > 10
-                  ? result.name.substring(0, 10) + "…"
-                  : result.name}
-              </h4>
-            )}
-            {result.first_air_date ? (
-              <span>{result.first_air_date}</span>
-            ) : (
-              <span>{result.release_date}</span>
-            )}
-          </PosterWrap>
+          <Link key={result.id} to={`/detail/${result.id}`}>
+            <PosterWrap key={result.id}>
+              <img
+                src={`https://image.tmdb.org/t/p/w440_and_h660_face${result.poster_path}`}
+                alt="사진"
+              />{" "}
+              {/*이미지 map*/}
+              {result.title ? (
+                <h4>
+                  {result.title.length > 10
+                    ? result.title.substring(0, 10) + "…"
+                    : result.title}
+                </h4>
+              ) : (
+                <h4>
+                  {result.name.length > 10
+                    ? result.name.substring(0, 10) + "…"
+                    : result.name}
+                </h4>
+              )}
+              {result.first_air_date ? (
+                <span>{result.first_air_date}</span>
+              ) : (
+                <span>{result.release_date}</span>
+              )}
+            </PosterWrap>
+          </Link>
         ))}
       </ImgItemWrap>
     </>

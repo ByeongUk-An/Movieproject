@@ -4,8 +4,19 @@ import { movieApi } from "../api";
 
 const DetailWrap = styled.section`
   width: 100%;
-  height: 20px;
-  background: pink;
+  display: flex;
+  /* height: 20px; */
+`;
+const Detail1 = styled.div`
+  width: 30%;
+
+  & > img {
+    height: 100%;
+    margin-bottom: 21px;
+  }
+`;
+const Detail2 = styled.div`
+  width: 70%;
 `;
 
 function Detail(props) {
@@ -29,6 +40,7 @@ function Detail(props) {
   useEffect(() => {
     reqdetail(id);
   }, []);
+
   console.log(show);
   console.log(loading);
 
@@ -37,8 +49,16 @@ function Detail(props) {
   } else {
     return (
       <DetailWrap>
-        <h2>{show.title}</h2>
-        <h3>{show.id}</h3>
+        <Detail1>
+          <img
+            src={`https://image.tmdb.org/t/p/w440_and_h660_face${show.poster_path}`}
+          />
+        </Detail1>
+        <Detail2>
+          <h2>{show.title}</h2>
+          <p>{show.overview}</p>
+          <span>{show.release_date}</span>
+        </Detail2>
       </DetailWrap>
     );
   }

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const PosterHead = styled.h2`
   font-weight: 700;
@@ -45,20 +46,22 @@ function PosterTV({ data, subject }) {
       <PosterHead>{subject}</PosterHead>
       <ImgItemWrap>
         {data.map((result) => (
-          <PosterWrap key={result.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w440_and_h660_face${result.poster_path}`}
-              alt="사진"
-            />{" "}
-            {/*이미지 map*/}
-            <h4>
-              {result.name.length > 12
-                ? result.name.substring(0, 12) + "…"
-                : result.name}
-            </h4>{" "}
-            {/*타이틀 map*/}
-            <span>{result.first_air_date}</span>
-          </PosterWrap>
+          <Link key={result.id} to={`/detail/${result.id}`}>
+            <PosterWrap key={result.id}>
+              <img
+                src={`https://image.tmdb.org/t/p/w440_and_h660_face${result.poster_path}`}
+                alt="사진"
+              />{" "}
+              {/*이미지 map*/}
+              <h4>
+                {result.name.length > 12
+                  ? result.name.substring(0, 12) + "…"
+                  : result.name}
+              </h4>{" "}
+              {/*타이틀 map*/}
+              <span>{result.first_air_date}</span>
+            </PosterWrap>
+          </Link>
         ))}
       </ImgItemWrap>
     </>
