@@ -8,7 +8,7 @@ const PosterHead = styled.h2`
   margin-bottom: 20px;
 `;
 const PosterWrap = styled.div`
-  width: 170px;
+  width: 150px;
   height: 225px;
   margin-right: 20px;
   text-align: center;
@@ -39,6 +39,10 @@ const ImgItemWrap = styled.div`
   overflow-x: scroll;
   overflow-y: hidden;
 `;
+const PosterLink = styled(Link)`
+  width: 150px;
+  margin-right: 40px;
+`;
 
 function PosterTrend({ data, subject }) {
   if (data === null) return <div>Loding</div>;
@@ -48,7 +52,7 @@ function PosterTrend({ data, subject }) {
       <PosterHead>{subject}</PosterHead>
       <ImgItemWrap>
         {data.map((result) => (
-          <Link key={result.id} to={`/detail/${result.id}`}>
+          <PosterLink key={result.id} to={`/detail/${result.id}`}>
             <PosterWrap key={result.id}>
               <img
                 src={`https://image.tmdb.org/t/p/w440_and_h660_face${result.poster_path}`}
@@ -74,7 +78,7 @@ function PosterTrend({ data, subject }) {
                 <span>{result.release_date}</span>
               )}
             </PosterWrap>
-          </Link>
+          </PosterLink>
         ))}
       </ImgItemWrap>
     </>
